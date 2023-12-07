@@ -5,7 +5,7 @@
 }
 body{
     background-color: #7d6759;
-    color: #1e1e24;
+    color: #e1fae8;
     line-height: 2em;
 
 }
@@ -45,6 +45,7 @@ nav>h1{
 }
 .leftbar{
     background-color: #d8c3a5;
+    color: #1e1e24;
     /* position: fixed; */
     width: 20%;
     height: 100vh;
@@ -80,6 +81,8 @@ nav>h1{
     background-color: #1e1e24; 
     color: #e1fae8;
     border: none;
+    width: 4vw;
+    line-height: 2em;
     font-family: 'Barlow', sans-serif;
 
 }
@@ -98,7 +101,7 @@ nav>h1{
   }
   .openButton {
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     background-color: #4f3d36;
     font-family: 'Young Serif', serif;
     color: #e1fae8;
@@ -115,6 +118,7 @@ nav>h1{
   .formPopup {
     display: none;
     position: fixed;
+    width: 40%;
     left:50%;
     top: 5%;
     transform: translate(-50%, 5%);
@@ -125,7 +129,7 @@ nav>h1{
     max-width: 120vw;
     max-height: 140vh;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: #4f3d36;
     font-family: 'Young Serif', serif;
     color: #e1fae8;
@@ -140,7 +144,7 @@ nav>h1{
     border: 2px dashed #e1fae8;
     font-family: 'Barlow', sans-serif;
     border-radius: 8px;
-    /* padding: 20px; */
+    margin-top: 20px;
     text-align: center;
     line-height: 200px;
     cursor: pointer;
@@ -152,35 +156,36 @@ nav>h1{
     flex-wrap: wrap;
     justify-content: space-between;
     width: 100%;
-    padding: 20px;
-    margin-right: 15px;
+    padding: 0px;
+    margin: 15px;
 }
 
 .form-fields {
-    width: 60%; /* Adjust the width as needed */
+    width: 100%; /* Adjust the width as needed */
+    padding:none;
 }
 #form-content select
 {
     background-color: #1e1e24; 
     color: #e1fae8;
     font-family: 'Barlow', sans-serif;
-    width: 4vw;
+    width: 10vw;
     line-height: 2em;
-    text-align: center;
-    border: none;
     height: 2.195em;
+    border: none;
+    border-radius: 3px;
     text-align: center;
-    /* transform: translateY(1px); */
+    /*transform: translateY(200px);*/ 
 }
 #form-content input{
     background-color: #1e1e24; 
     color: #e1fae8;
     font-family: 'Barlow', sans-serif;
-    margin-top: 15px;
     text-align: center;
     border: none;
+    border-radius: 3px;
     line-height: 2em;
-    width: 12vw;
+    width: 15vw;
     
 }
 #form-content input[type=number]
@@ -195,6 +200,7 @@ nav>h1{
 .autgat input[type=text]{
     width: 5.2vw !important;
 }
+
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -205,36 +211,42 @@ nav>h1{
 }
 
 .multiselect {
-    width: 170px;
-    font-size: 15px;
-    padding-bottom: 4px;
-    border-radius: 3px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 2.195em;
+    line-height: 2em;
+    width: 12vw;
+    background-color: #1e1e24; 
+    color: #e1fae8;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+    font-size: 13px;
+    /*padding-bottom: 4px;*/
+    /*border-radius: 3px;*/
+ /*   border: 1px solid rgba(0, 0, 0, 0.1);*/
     transition: 0.2s;
     outline: none;
 }
-
+/*
 .multiselect:hover {
     border: 1px solid rgba(0, 0, 0, 0.3);
 }
-
+*/
 .multiselect.active {
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    border-bottom: 1px solid transparent;
+   /* border-bottom: 1px solid transparent;*/
 }
 
 .multiselect > .title {
     cursor: pointer;
-    height: 16px;
-    padding: 6px;
+    height: 2.195em;
+    padding: 0px;
 }
 
 .multiselect > .title > .text {
     max-width: 130px;
     max-height: 25px;
-    display: block;
-    float: left;
+   /* display: block;*/
+    /*float: center;*/
     overflow: hidden;
     line-height: 1.3em;
 }
@@ -242,9 +254,11 @@ nav>h1{
 .multiselect > .title > .expand-icon,
 .multiselect > .title > .close-icon {
     float: right;
-    border-radius: 50%;
-    padding: 0 4px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    /*
+    border-radius: 0%; */
+    padding: 0 0px;
+    line-height: 100%;
+    border: 0px solid rgba(0, 0, 0, 0.1);
     font-weight: 700;
     transition: 0.2s;
     display: none;
@@ -256,11 +270,11 @@ nav>h1{
 
 .multiselect > .title > .expand-icon,
 .multiselect.selection > .title > .close-icon {
-    display: block;
+    display: none;
 }
 
 .multiselect > .title > .close-icon:hover {
-    border: 1px solid rgba(0, 0, 0, 0.3);
+    border: 0px solid rgba(0, 0, 0, 0.3);
     background: rgb(203, 32, 32);
     color: #fff;
 }
@@ -269,29 +283,36 @@ nav>h1{
     max-height: 200px;
     overflow: auto;
     margin-top: 4px;
-    margin-left: -1px;
-    width: 170px;
+    /*margin-left: -1px; */
+    width: 12vw;
     transition: 0.2s;
     position: absolute;
     z-index: 99;
-    background: #fff;
+    background-color: #1e1e24; 
+    color: #e1fae8;
+    font-family: 'Barlow', sans-serif;
     border: 1px solid transparent;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .multiselect.active > .container {
-    border: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
     border-top: 0;
+    background-color: #1e1e24; 
+    color: #e1fae8;
 }
 
 .multiselect:hover > .container {
+    background-color: #1e1e24; 
+    color: #e1fae8;
     border-top-color: rgba(0, 0, 0, 0.3);
 }
 
 .multiselect.active:hover > .container {
     border-color: rgba(0, 0, 0, 0.3);
+    background-color: #1e1e24; 
+    color: #e1fae8;
 }
 
 .multiselect > .container > option {
@@ -304,15 +325,16 @@ nav>h1{
 }
 
 .multiselect > .container > option.selected {
-    background: rgb(122, 175, 233);
+    background: #d8c3a5;
+    color: #1e1e24;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    color: #fff;
 }
 
 .multiselect > .container > option:hover {
     background: rgba(0, 0, 0, 0.1);
-    color: #000;
+    background: #d8c3a5;
+    color: #1e1e24;
 }
 
 .multiselect.active > .container > option {

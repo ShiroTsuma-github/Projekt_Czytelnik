@@ -27,13 +27,14 @@
               <form method="POST" action="{{ url_for('addBook') }}" class="formContainer" id="dodajKsiazke">
                 <h2>Dodaj książkę</h2>
 
-                <div id="form-content">
                     <div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" onclick="clickHandler();">
                         <div id="content">
                             <p>Drop an image file here or click to select one</p>
                             <input type="file" id="fileInput" name="okladka" accept="image/*" style="display: none;" onchange="handleFileSelect(event);">
                         </div>
                     </div>
+                <div id="form-content">
+
                     <div class="form-fields">
                         <input type="text" required id="tytul" name='tytul' placeholder="Tytuł"><br>
                         <div>
@@ -48,23 +49,23 @@
                                 <option value="5">5</option>
                             </select>
                         </div>
-                        <input type="text" required id="autor" name='autor' placeholder="Autor">
-                        <div class="autgat">
-                            <input type="hidden" name="wybrane_gatunki" name="wybrane_gatunki" id="wybrane_gatunki">
-                            <div class="multiselect" id="gatunki" name="gatunki" multiple="multiple" data-target="dodajKsiazke">
-                                <div class="title noselect">
-                                    <span id="all_selected_text" class="text">Select</span>
-                                    <span class="close-icon">&times;</span>
-                                    <span class="expand-icon">&plus;</span>
-                                </div>
-                                <div class="container">
-                                    {% for gatunek in gatunki %}
-                                    <option  value="{{gatunek[1]}}">{{gatunek[1]}}</option>
-                                {% endfor %}
-                                </div>
+                        <input type="text" required id="autor" name='autor' placeholder="Autor"><br>
+                        <div align=center>
+                        <div class="multiselect" id="gatunki" name="gatunki" multiple="multiple" data-target="dodajKsiazke">
+                            <div class="title noselect">
+                                <span id="all_selected_text" class="text">Select.</span>
+                                <span class="close-icon">&times;</span>
+                                <span class="expand-icon">&plus;</span>
                             </div>
-                            <input type="text" id="tagi" name="tagi" placeholder="Tagi">
+                            <div class="container">
+                                {% for gatunek in gatunki %}
+                                <option  value="{{gatunek[1]}}">{{gatunek[1]}}</option>
+                            {% endfor %}
+                            </div>
                         </div>
+                        </div>
+                            <input type="hidden" name="wybrane_gatunki" name="wybrane_gatunki" id="wybrane_gatunki">
+                            <input type="text" id="tagi" name="tagi" placeholder="Tagi">
                     </div>
                 </div>
 
