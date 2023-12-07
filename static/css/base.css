@@ -8,6 +8,15 @@ body{
 nav{
     background-color: aqua;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+    height: 5%;
+    margin: auto;
+}
+nav>h1{
+    vertical-align: middle;
 }
 .search {
     margin: 0 auto;
@@ -15,8 +24,10 @@ nav{
 }
 .leftbar{
     background-color: blue;
+    /* position: fixed; */
     width: 33%;
     height: 100vh;
+    z-index: 1;
     text-align: center;
 }
 .rightbar{
@@ -24,7 +35,70 @@ nav{
     height: 100vh;
     background-color: blueviolet;
 }
-.flex-container{
+/* .flex-container{
     display: flex;
     flex-wrap: wrap;
+} */
+.search-bar{
+    margin-top: 100px;
+}
+
+
+
+.openBtn {
+    display: flex;
+    justify-content: left;
+  }
+  .openButton {
+    border: none;
+    border-radius: 5px;
+    background-color: #1c87c9;
+    color: white;
+    padding: 14px 20px;
+    cursor: pointer;
+    position: fixed;
+  }
+  .loginPopup {
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+  .formPopup {
+    display: none;
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    transform: translate(-50%, 5%);
+    border: 3px solid #999999;
+    z-index: 9;
+  }
+  .formContainer {
+    /* max-width: 400px; */
+    max-width: 60vw;
+    max-height: 70vh;
+    padding: 20px;
+    background-color: #fff;
+  }
+
+  #drop-area {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    /* padding: 20px; */
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+#preview {
+    width: 200px;
+    height: 200px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#preview img {
+    width: 100%;
+    height: 100%;
 }
