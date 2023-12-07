@@ -49,11 +49,11 @@ def addBook():
         przeczytane = int(request.form['actual_chapters'])
         ocena = int(request.form.get('ocena', '0'))
         gatunek = (request.form['wybrane_gatunki']).split(',')
-        # komentarz = request.form['komentarz']
+        komentarz = request.form.get('komentarz', None)
         tagi = None if request.form['tagi'] == "" else request.form['tagi']
         cur = get_db().cursor()
         cur.execute('INSERT INTO Ksiazka (ksiazka_tytul, ksiazka_strony, ksiazka_przeczytane, ksiazka_ocena, ksiazka_okladka, ksiazka_komentarz) VALUES (?, ?, ?, ?, ?, ?)',
-                    (tytul, rozdzialy, przeczytane, ocena, okladka, tagi))
+                    (tytul, rozdzialy, przeczytane, ocena, okladka, komentarz))
         get_db().commit()
 
     return redirect(url_for('index'))
