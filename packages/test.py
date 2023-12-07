@@ -49,18 +49,12 @@ def addBook():
         tagi = request.form['tagi']
 
 
-        print(request.form)
-
     return redirect(url_for('index'))
 
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/')
 def index():
     cur = get_db().cursor()
-    if request.method == 'POST':
-        print("posted")
-    else:
-        return render_template('base.html') 
     cur.execute('SELECT * FROM Ksiazka') 
     data = cur.fetchall() 
     return render_template("base.html", data=data) 

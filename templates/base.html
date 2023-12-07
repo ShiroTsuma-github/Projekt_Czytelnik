@@ -68,18 +68,21 @@
     </div>
     <div class="rightbar">
         {%for ksiazka in data%} 
-        <table class="book"> 
+        <div class="book">
+            <img src={{ksiazka[5]}} alt="{{ksiazka[1]}}">
+        <table class="info"> 
             <tr> 
-                {{ksiazka[1]}} 
+                <td>{{ksiazka[1]}}</td>
             </tr> 
             <tr> 
-                {{ksiazka[2]}}/{{ksiazka[1]}} 
+                <td>{{ksiazka[3]}}/{{ksiazka[2]}}</td>
             </tr>
             <tr> 
-                {{ksiazka[3]}}/5
+                <td>{{ksiazka[4]}}/5</td>
             </tr>               
           </table>
-          {%endfor%} 
+        </div>
+        {%endfor%} 
     </div>
 </div>
 </body>
