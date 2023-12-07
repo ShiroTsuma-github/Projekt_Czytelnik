@@ -1,0 +1,30 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    background-color: red;
+}
+nav{
+    background-color: aqua;
+    text-align: center;
+}
+.search {
+    margin: 0 auto;
+    display: block;
+}
+.leftbar{
+    background-color: blue;
+    width: 33%;
+    height: 100vh;
+    text-align: center;
+}
+.rightbar{
+    width: 66%;
+    height: 100vh;
+    background-color: blueviolet;
+}
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+}
