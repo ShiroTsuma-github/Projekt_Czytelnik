@@ -52,9 +52,26 @@ def addBook():
         komentarz = request.form.get('komentarz', None)
         tagi = None if request.form['tagi'] == "" else request.form['tagi']
         cur = get_db().cursor()
+        db = get_db()
+        cur.execute('SELECT autor_id FROM Autor WHERE autor_nazwa = (?)',
+                    (autor,))
+        autor_id = cur.fetchall()
+        if len(autor_id) == 0:
+            cur.execute('INSERT INTO Autor (autor_nazwa) VALUES (?)',
+                        (autor,))
+            db.commit()
         cur.execute('INSERT INTO Ksiazka (ksiazka_tytul, ksiazka_strony, ksiazka_przeczytane, ksiazka_ocena, ksiazka_okladka, ksiazka_komentarz) VALUES (?, ?, ?, ?, ?, ?)',
                     (tytul, rozdzialy, przeczytane, ocena, okladka, komentarz))
-        get_db().commit()
+        db.commit()
+        cur.execute('SELECT autor_id FROM Autor WHERE autor_nazwa = (?)',
+                    (autor,))
+        autor_id = cur.fetchall()[0][0]
+        cur.execute('SELECT ksiazka_id FROM Ksiazka WHERE ksiazka_tytul = (?)',
+                    (tytul,))
+        ksiazka_id = cur.fetchall()[0][0]
+        cur.execute('INSERT INTO ksiazka_autor (ksiazka_id, autor_id) VALUES (?, ?)',
+                    (ksiazka_id, autor_id))
+        db.commit()
 
     return redirect(url_for('index'))
 
