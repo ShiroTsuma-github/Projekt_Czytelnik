@@ -1,5 +1,5 @@
 from packages import app
-from flask import render_template, request
+from flask import render_template, request, redirect, url_for
 from flask import g
 import os
 import sqlite3
@@ -37,7 +37,8 @@ def make_dicts(cursor, row):
 def addBook():
     if request.method == 'POST':
         print(request.form)
-    return render_template('base.html')
+
+    return redirect(url_for('index'))
 
 
 @app.route('/', methods=["GET", "POST"])
