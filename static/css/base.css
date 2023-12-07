@@ -1,16 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow&family=Young+Serif&display=swap');
 *{
     margin: 0px;
     padding: 0px;
 }
 body{
-    background-color: red;
+    background-color: #7d6759;
+    color: #1e1e24;
+    line-height: 2em;
+
 }
 nav{
-    background-color: aqua;
+    background-color: #d8c3a5;
+    color: #1e1e24;
     text-align: center;
+    font-family: 'Young Serif', serif;
     position: sticky;
     top: 0;
     z-index: 2;
+    border-bottom: 4px #1e1e24 solid;
     width: 100%;
     height: 5%;
     margin: auto;
@@ -19,24 +26,37 @@ nav>h1{
     vertical-align: middle;
 }
 .search {
+    background-color: #4f3d36; 
+    color: #d8c3a5;
+    font-family: 'Barlow', sans-serif;
+    text-align: center;
+    border: none;
     margin: 0 auto;
     display: block;
+    border-radius: 5px;
+}
+
+.search:focus {
+    outline: 1px #eddac0 solid;
+    
 }
 .main {
     display: flex;
 }
 .leftbar{
-    background-color: blue;
+    background-color: #d8c3a5;
     /* position: fixed; */
-    width: 33%;
+    width: 20%;
     height: 100vh;
+    font-family: 'Barlow', sans-serif;
     z-index: 1;
     text-align: center;
 }
 .rightbar{
     width: 66%;
     height: 100vh;
-    background-color: blueviolet;
+    background-color: #7d6759;
+    font-family: 'Barlow', sans-serif;
     margin-left: auto;
     margin-right: 0;
 }
@@ -45,23 +65,39 @@ nav>h1{
     flex-wrap: wrap;
 } */
 .search-bar{
-    margin-top: 100px;
+    margin-top: 2px;
 }
 
+.btn {
+    background-color: #1e1e24; 
+    color: #e1fae8;
+    border: none;
+    font-family: 'Barlow', sans-serif;
 
+}
+
+.btn cancel{
+    background-color: #1e1e24; 
+    color: #e1fae8;
+    border: none;
+    font-family: 'Barlow', sans-serif;
+
+}
 
 .openBtn {
     display: flex;
-    justify-content: left;
+    justify-content: center;
   }
   .openButton {
     border: none;
     border-radius: 5px;
-    background-color: #1c87c9;
-    color: white;
+    background-color: #4f3d36;
+    font-family: 'Young Serif', serif;
+    color: #e1fae8;
     padding: 14px 20px;
     cursor: pointer;
-    position: fixed;
+    margin: 20px;
+    /*position: fixed;*/
   }
   .loginPopup {
     position: relative;
@@ -71,18 +107,20 @@ nav>h1{
   .formPopup {
     display: none;
     position: fixed;
-    left: 45%;
+    left:50%;
     top: 5%;
     transform: translate(-50%, 5%);
     z-index: 9;
   }
   .formContainer {
     /* max-width: 400px; */
-    max-width: 60vw;
-    max-height: 70vh;
+    max-width: 120vw;
+    max-height: 140vh;
     padding: 20px;
     border-radius: 10px;
-    background-color: #fff;
+    background-color: #4f3d36;
+    font-family: 'Young Serif', serif;
+    color: #e1fae8;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,13 +129,16 @@ nav>h1{
   #drop-area {
     width: 200px;
     height: 200px;
-    border: 2px dashed #ccc;
+    border: 2px dashed #e1fae8;
+    font-family: 'Barlow', sans-serif;
     border-radius: 8px;
     /* padding: 20px; */
     text-align: center;
+    line-height: 200px;
     cursor: pointer;
     overflow: hidden;
 }
+
 #form-content {
     display: flex;
     flex-wrap: wrap;
@@ -106,26 +147,43 @@ nav>h1{
     padding: 20px;
     margin-right: 15px;
 }
+
 .form-fields {
-    width: 45%; /* Adjust the width as needed */
-}
-#form-content input[type=number]
-{
-    width: 3.6vw;
+    width: 60%; /* Adjust the width as needed */
 }
 #form-content select
 {
-    width: 3.25vw;
+    background-color: #1e1e24; 
+    color: #e1fae8;
+    font-family: 'Barlow', sans-serif;
+    width: 4vw;
     line-height: 2em;
+    text-align: center;
+    border: none;
     height: 2.195em;
-    transform: translateY(1px);
+    text-align: center;
+    /* transform: translateY(1px); */
 }
 #form-content input{
+    background-color: #1e1e24; 
+    color: #e1fae8;
+    font-family: 'Barlow', sans-serif;
     margin-top: 15px;
+    text-align: center;
+    border: none;
     line-height: 2em;
     width: 12vw;
     
 }
+#form-content input[type=number]
+{
+    width: 6vw;
+}
+
+#form-content input:focus{
+    outline: 1px #eddac0 solid;
+}
+
 .autgat input[type=text]{
     width: 5.2vw !important;
 }

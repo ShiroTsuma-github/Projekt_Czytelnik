@@ -14,14 +14,11 @@
     </nav>
     <div class="main">
     <div class="leftbar">
-        <div class="search-bar">
-            <input class="search" type="text" placeholder="Szukaj..">
-        </div>
 
 
         <!-- skopiowany popup form -->
         <div class="openBtn">
-            <button class="openButton" onclick="openForm()"><strong>Open Form</strong></button>
+            <button class="openButton" onclick="openForm()">Dodaj książkę</button>
           </div>
           <div class="loginPopup">
             <div class="formPopup" id="popupForm">
@@ -38,8 +35,8 @@
                     <div class="form-fields">
                         <input type="text" required id="tytul" name='tytul' placeholder="Tytuł"><br>
                         <div>
-                            <input type="number" required name="actual_chapters" id="actual_chapters" min="0" max="99999" placeholder="Przeczytane">
-                            <input type="number" required name="total_chapters" id="total_chapters" min="1" max="99999" placeholder="Łącznie">
+                            <input type="number" required name="actual_chapters" id="actual_chapters" min="0" max="99999" placeholder="Przeczytane" inputmode="numeric">
+                            <input type="number" required name="total_chapters" id="total_chapters" min="1" max="99999" placeholder="Łącznie" inputmode="numeric">
                             <select name="ocena" id="ocena" form="dodajKsiazke">
                                 <option value="" disabled selected>Ocena</option>
                                 <option value="1">1</option>
@@ -57,14 +54,20 @@
                     </div>
                 </div>
 
+                <div class="form-fields">
                 <button type="submit" class="btn">Dodaj</button>
                 <button type="reset" class="btn cancel" onclick="closeForm();clearImage()">Anuluj</button>
+                </div>
               </form>
             </div>
           </div>
 
         
-        <h2>Tagi<h2>
+        <h2>Tagi</h2>
+        
+         <div class="search-bar">
+            <input class="search" type="text" placeholder="Szukaj...">
+        </div>
     </div>
     <div class="rightbar">
         {%for ksiazka in data%} 
