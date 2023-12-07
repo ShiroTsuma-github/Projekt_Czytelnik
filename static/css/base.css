@@ -54,24 +54,35 @@ nav>h1{
     text-align: center;
 }
 .rightbar{
-    width: 66%;
+    width: 80%;
     height: 100vh;
     background-color: #7d6759;
     font-family: 'Barlow', sans-serif;
     margin-left: auto;
     margin-right: 0;
     display: flex;
+    flex-wrap: wrap;
 }
 .book{
     display: flex;
-    flex-wrap: wrap;
-    width: 300px;
-    height: 100px;
+    width: 390px;
+    height: 200px;
+    background-color: #d8c3a5;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+}
+.image{
+    margin-left: 20px;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 .info{
     margin-left: auto;
-    margin-right: 30px;
+    margin-right: 20px;
     text-align: right;
+    color:#1e1e24;
 }
 .search-bar{
     margin-top: 2px;

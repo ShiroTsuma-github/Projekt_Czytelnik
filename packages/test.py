@@ -79,11 +79,9 @@ def addBook():
 @app.route('/')
 def index():
     cur = get_cursor()
-    cur.execute('SELECT * FROM Ksiazka') 
+    cur.execute('select ks.*, au.* from ksiazka as ks LEFT join ksiazka_autor as ka on ka.ksiazka_id = ks.ksiazka_id left join autor as au on au.autor_id = ka.autor_id') 
     data = cur.fetchall() 
-    cur.execute('SELECT * from Gatunek')
-    gatunek = cur.fetchall()
-    return render_template("base.html", data=data, gatunki=gatunek) 
+    return render_template("base.html", data=data) 
 
 
 @app.teardown_appcontext

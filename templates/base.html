@@ -87,16 +87,19 @@
     <div class="rightbar">
         {%for ksiazka in data%} 
         <div class="book">
-            <img src={{ksiazka[5]}} alt="{{ksiazka[1]}}">
+            <img src="{{ url_for('static', filename='images/okladka.png') }}" alt="{{ksiazka[1]}}" class="image" height="186"/>
         <table class="info"> 
             <tr> 
-                <td>{{ksiazka[1]}}</td>
+                <td><h1>{{ksiazka[1]}}</h1></td>
             </tr> 
             <tr> 
-                <td>{{ksiazka[3]}}/{{ksiazka[2]}}</td>
+                <td><h3>{{ksiazka[8]}}</h3></td>
+            </tr> 
+            <tr> 
+                <td>Strony: {{ksiazka[3]}}/{{ksiazka[2]}}</td>
             </tr>
             <tr> 
-                <td>{{ksiazka[4]}}/5</td>
+                <td>Opinia: {{ksiazka[4]}}/5</td>
             </tr>               
           </table>
         </div>
