@@ -44,26 +44,20 @@ def addBook():
         rozdzialy = int(request.form['total_chapters'])
         przeczytane = int(request.form['actual_chapters'])
         ocena = int(request.form.get('ocena', '0'))
-        gatunek = request.form['gatunek']
+        gatunek = (request.form['wybrane_gatunki']).split(',')
         # komentarz = request.form['komentarz']
         tagi = request.form['tagi']
-
-
-        print(request.form)
-
     return redirect(url_for('index'))
 
 
-@app.route('/', methods=["GET", "POST"])
+@app.route('/')
 def index():
     cur = get_db().cursor()
-    if request.method == 'POST':
-        print("posted")
-    else:
-        return render_template('base.html') 
     cur.execute('SELECT * FROM Ksiazka') 
     data = cur.fetchall() 
-    return render_template("base.html", data=data) 
+    cur.execute('SELECT * from Gatunek')
+    gatunek = cur.fetchall()
+    return render_template("base.html", data=data, gatunki=gatunek) 
 
 
 @app.teardown_appcontext

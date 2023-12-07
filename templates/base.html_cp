@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css')}}">
+    <script src="{{url_for('static', filename='js/form_image.js')}}"></script>
+    <script src="{{url_for('static', filename='js/form_show_hide.js')}}"></script>
+</head>
+<body>
+    <nav>
+    <h1>Czytelnik</h1>
+    </nav>
+    <div class="main">
+    <div class="leftbar">
+        <div class="search-bar">
+            <input class="search" type="text" placeholder="Szukaj..">
+        </div>
+
+
+        <!-- skopiowany popup form -->
+        <div class="openBtn">
+            <button class="openButton" onclick="openForm()"><strong>Open Form</strong></button>
+          </div>
+          <div class="loginPopup">
+            <div class="formPopup" id="popupForm">
+              <form method="POST" action="{{ url_for('addBook') }}" class="formContainer" id="dodajKsiazke">
+                <h2>Dodaj książkę</h2>
+
+                <div id="form-content">
+                    <div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" onclick="clickHandler();">
+                        <div id="content">
+                            <p>Drop an image file here or click to select one</p>
+                            <input type="file" id="fileInput" name="okladka" accept="image/*" style="display: none;" onchange="handleFileSelect(event);">
+                        </div>
+                    </div>
+                    <div class="form-fields">
+                        <input type="text" required id="tytul" name='tytul' placeholder="Tytuł"><br>
+                        <div>
+                            <input type="number" required name="actual_chapters" id="actual_chapters" min="0" max="99999" placeholder="Przeczytane">
+                            <input type="number" required name="total_chapters" id="total_chapters" min="1" max="99999" placeholder="Łącznie">
+                            <select name="ocena" id="ocena" form="dodajKsiazke">
+                                <option value="" disabled selected>Ocena</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <input type="text" required id="autor" name='autor' placeholder="Autor">
+                        <div class="autgat">
+                            <input type="text" required id="gatunek" name="gatunek" placeholder="Gatunek"> 
+                            <input type="text" id="tagi" name="tagi" placeholder="Tagi">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-fields">
+                <button type="submit" class="btn">Dodaj</button>
+                <button type="reset" class="btn cancel" onclick="closeForm();clearImage()">Anuluj</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        
+        <h2>Tagi<h2>
+    </div>
+    <div class="rightbar">
+        {%for ksiazka in data%} 
+        <table class="book"> 
+            <tr> 
+                {{ksiazka[1]}} 
+            </tr> 
+            <tr> 
+                {{ksiazka[2]}}/{{ksiazka[1]}} 
+            </tr>
+            <tr> 
+                {{ksiazka[3]}}/5
+            </tr>               
+          </table>
+          {%endfor%} 
+    </div>
+</div>
+</body>
+</html>

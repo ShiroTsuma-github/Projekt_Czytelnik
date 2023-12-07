@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{url_for('static', filename='js/form_image.js')}}"></script>
     <script src="{{url_for('static', filename='js/form_show_hide.js')}}"></script>
+    <script src="{{url_for('static', filename='js/multiple_select.js')}}"></script>
 </head>
 <body>
     <nav>
@@ -48,7 +50,19 @@
                         </div>
                         <input type="text" required id="autor" name='autor' placeholder="Autor">
                         <div class="autgat">
-                            <input type="text" required id="gatunek" name="gatunek" placeholder="Gatunek"> 
+                            <input type="hidden" name="wybrane_gatunki" name="wybrane_gatunki" id="wybrane_gatunki">
+                            <div class="multiselect" id="gatunki" name="gatunki" multiple="multiple" data-target="dodajKsiazke">
+                                <div class="title noselect">
+                                    <span id="all_selected_text" class="text">Select</span>
+                                    <span class="close-icon">&times;</span>
+                                    <span class="expand-icon">&plus;</span>
+                                </div>
+                                <div class="container">
+                                    {% for gatunek in gatunki %}
+                                    <option  value="{{gatunek[1]}}">{{gatunek[1]}}</option>
+                                {% endfor %}
+                                </div>
+                            </div>
                             <input type="text" id="tagi" name="tagi" placeholder="Tagi">
                         </div>
                     </div>
@@ -56,6 +70,7 @@
 
                 <div class="form-fields">
                 <button type="submit" class="btn">Dodaj</button>
+                <button type="submit" onclick="getSelectedFinish()" class="btn">Dodaj</button>
                 <button type="reset" class="btn cancel" onclick="closeForm();clearImage()">Anuluj</button>
                 </div>
               </form>
@@ -71,18 +86,21 @@
     </div>
     <div class="rightbar">
         {%for ksiazka in data%} 
-        <table class="book"> 
+        <div class="book">
+            <img src={{ksiazka[5]}} alt="{{ksiazka[1]}}">
+        <table class="info"> 
             <tr> 
-                {{ksiazka[1]}} 
+                <td>{{ksiazka[1]}}</td>
             </tr> 
             <tr> 
-                {{ksiazka[2]}}/{{ksiazka[1]}} 
+                <td>{{ksiazka[3]}}/{{ksiazka[2]}}</td>
             </tr>
             <tr> 
-                {{ksiazka[3]}}/5
+                <td>{{ksiazka[4]}}/5</td>
             </tr>               
           </table>
-          {%endfor%} 
+        </div>
+        {%endfor%} 
     </div>
 </div>
 </body>
