@@ -25,17 +25,37 @@
           </div>
           <div class="loginPopup">
             <div class="formPopup" id="popupForm">
-              <form action="/action_page.php" class="formContainer">
+              <form method="POST" action="{{ url_for('index') }}" class="formContainer">
                 <h2>Dodaj książkę</h2>
 
-
-                <div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" onclick="clickHandler();">
-                    <div id="content">
-                        <p>Drop an image file here or click to select one</p>
-                        <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event);">
+                <div id="form-content">
+                    <div id="drop-area" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" onclick="clickHandler();">
+                        <div id="content">
+                            <p>Drop an image file here or click to select one</p>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event);">
+                        </div>
+                    </div>
+                    <div class="form-fields">
+                        <input type="text" required id="tytul" placeholder="Tytuł"><br>
+                        <div>
+                            <input type="number" required name="actual_chapters" id="actual_chapters" min="1" max="99999" placeholder="Przeczytane">
+                            <input type="number" required name="total_chapters" id="total_chapters" min="1" max="99999" placeholder="Łącznie">
+                            <select name="a" id="">
+                                <option value="" disabled selected>Ocena</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <input type="text" required id="autor" placeholder="Autor">
+                        <div class="autgat">
+                            <input type="text" required id="gatunek" placeholder="Gatunek"> 
+                            <input type="text" id="tagi" placeholder="Tagi">
+                        </div>
                     </div>
                 </div>
-
 
                 <button type="submit" class="btn">Dodaj</button>
                 <button type="reset" class="btn cancel" onclick="closeForm();clearImage()">Anuluj</button>

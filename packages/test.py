@@ -1,5 +1,5 @@
 from packages import app
-from flask import render_template
+from flask import render_template, request
 from flask import g
 import os
 import sqlite3
@@ -39,15 +39,14 @@ def make_dicts(cursor, row):
                 for idx, value in enumerate(row))
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'], enctype="multipart/form-data")
 def index():
     cur = get_db().cursor()
+    if request.method == 'POST':
+        print("posted")
+    else:
+        return render_template('base.html')
     return render_template('base.html')
-
-
-@app.route('/about')
-def about():
-    return render_template('about.html')
 
 
 # @app.teardown_appcontext
