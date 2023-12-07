@@ -22,6 +22,9 @@ nav>h1{
     margin: 0 auto;
     display: block;
 }
+.main {
+    display: flex;
+}
 .leftbar{
     background-color: blue;
     /* position: fixed; */
@@ -34,6 +37,8 @@ nav>h1{
     width: 66%;
     height: 100vh;
     background-color: blueviolet;
+    margin-left: auto;
+    margin-right: 0;
 }
 /* .flex-container{
     display: flex;
