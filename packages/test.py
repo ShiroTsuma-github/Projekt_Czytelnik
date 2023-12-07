@@ -10,6 +10,8 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__)).replace("packages", "")
 
 # https://www.geeksforgeeks.org/how-to-build-a-web-app-using-flask-and-sqlite-in-python/
 
+# w formie komentarz
+
 
 def get_db():
     db = getattr(g, '_database', None)
@@ -36,6 +38,17 @@ def make_dicts(cursor, row):
 @app.route("/add", methods=["GET", "POST"])
 def addBook():
     if request.method == 'POST':
+        tytul = request.form['tytul']
+        autor = request.form['autor']
+        okladka = request.form['okladka']
+        rozdzialy = int(request.form['total_chapters'])
+        przeczytane = int(request.form['actual_chapters'])
+        ocena = int(request.form.get('ocena', '0'))
+        gatunek = request.form['gatunek']
+        # komentarz = request.form['komentarz']
+        tagi = request.form['tagi']
+
+
         print(request.form)
 
     return redirect(url_for('index'))
