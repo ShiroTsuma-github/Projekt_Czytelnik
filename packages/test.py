@@ -39,7 +39,7 @@ def make_dicts(cursor, row):
                 for idx, value in enumerate(row))
 
 
-@app.route('/', methods=['GET', 'POST'], enctype="multipart/form-data")
+@app.route('/')
 def index():
     cur = get_db().cursor()
     if request.method == 'POST':
