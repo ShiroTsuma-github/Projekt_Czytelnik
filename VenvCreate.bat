@@ -18,7 +18,7 @@ echo %venv_working%
 if "%venv_working%"=="venv working: True" (
     @REM NOTE: only uncomment the line below if you have a requirements.txt file
     echo venv is working properly. Installing requirements...
-    @REM pip install -r requirements.txt
+    pip install -r requirements.txt
 ) else (
     echo venv is not working properly. Not installing requirements.
 )
