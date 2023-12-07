@@ -6,7 +6,7 @@ import sqlite3
 DATABASE_DIR = 'databases/'
 DATABASE_NAME = 'ksiazki.db'
 DATABASE_SCHEMA = 'ksiazki.sql'
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__)).replace("packages","")
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__)).replace("packages", "")
 
 # https://www.geeksforgeeks.org/how-to-build-a-web-app-using-flask-and-sqlite-in-python/
 
@@ -16,12 +16,6 @@ def get_db():
     if db is None:
         db = g._database = sqlite3.connect(f'{ROOT_DIR}{DATABASE_DIR}{DATABASE_NAME}')
     return db
-
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
 
 
 def init_db():
@@ -39,18 +33,21 @@ def make_dicts(cursor, row):
                 for idx, value in enumerate(row))
 
 
-@app.route('/')
-def index():
-    cur = get_db().cursor()
+@app.route("/add", methods=["GET", "POST"])
+def addBook():
     if request.method == 'POST':
         print("posted")
-    else:
-        return render_template('base.html')
     return render_template('base.html')
 
 
-# @app.teardown_appcontext
-# def close_connection(exception):
-#     db = getattr(g, '_database', None)
-#     if db is not None:
-#         db.close()
+@app.route('/', methods=["GET", "POST"])
+def index():
+    cur = get_db().cursor()
+    return render_template('base.html')
+
+
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
