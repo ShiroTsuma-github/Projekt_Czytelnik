@@ -90,15 +90,3 @@ nav>h1{
     cursor: pointer;
     overflow: hidden;
 }
-
-#preview {
-    width: 200px;
-    height: 200px;
-    margin-top: 20px;
-    overflow: hidden;
-}
-
-#preview img {
-    width: 100%;
-    height: 100%;
-}

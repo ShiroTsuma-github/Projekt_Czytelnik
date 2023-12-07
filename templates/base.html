@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css')}}">
+    <script src="{{url_for('static', filename='js/form_image.js')}}"></script>
+    <script src="{{url_for('static', filename='js/form_show_hide.js')}}"></script>
 </head>
 <body>
     <nav>
@@ -33,111 +35,14 @@
                         <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="handleFileSelect(event);">
                     </div>
                 </div>
-                
-                <div id="preview"></div>
-                
-                <script>
-                    function dragOverHandler(event) {
-                        event.preventDefault();
-                        event.dataTransfer.dropEffect = 'copy';
-                    }
-                
-                    function dropHandler(event) {
-                        event.preventDefault();
-                
-                        if (event.dataTransfer.items) {
-                            // Use DataTransferItemList interface to access the file(s)
-                            for (let i = 0; i < event.dataTransfer.items.length; i++) {
-                                // If dropped items aren't files, reject them
-                                if (event.dataTransfer.items[i].kind === 'file') {
-                                    const file = event.dataTransfer.items[i].getAsFile();
-                                    handleFile(file);
-                                }
-                            }
-                        } else {
-                            // Use DataTransfer interface to access the file(s)
-                            for (let i = 0; i < event.dataTransfer.files.length; i++) {
-                                handleFile(event.dataTransfer.files[i]);
-                            }
-                        }
-                    }
-                
-                    function handleFileSelect(event) {
-                        const file = event.target.files[0];
-                        handleFile(file);
-                    }
-                
-                    function handleFile(file) {
-                        const preview = document.getElementById('preview');
-                        const dropArea = document.getElementById('drop-area');
-                        const dropContent = document.getElementById('content')
-                        const fileInput = document.getElementById('fileInput');
-                
-                        const reader = new FileReader();
-                
-                        reader.onload = function (e) {
-                            const img = new Image();
-                            img.src = e.target.result;
-                
-                            img.onload = function () {
-                                // Limit the displayed image size to 200x200 pixels while maintaining proportions
-                                const maxWidth = 200;
-                                const maxHeight = 200;
-                
-                                let width = img.width;
-                                let height = img.height;
-                
-                                // Calculate new dimensions while maintaining the aspect ratio
-                                if (width > maxWidth || height > maxHeight) {
-                                    const aspectRatio = width / height;
-                
-                                    if (width > height) {
-                                        width = maxWidth;
-                                        height = width / aspectRatio;
-                                    } else {
-                                        height = maxHeight;
-                                        width = height * aspectRatio;
-                                    }
-                                }
-                
-                                img.width = width;
-                                img.height = height;
-                
-                                // Clear previous content and append the new image
-                                // preview.innerHTML = '';
-                                // preview.appendChild(img);
-                                dropArea.removeChild(dropArea.lastChild)
-                                dropArea.appendChild(img)
-                                // dropArea.style.border = 'none';
-                                dropContent.style.display = 'none';
-                
-                                // Hide the file input after the image is selected
-                                fileInput.style.display = 'none';
-                            };
-                        };
-                
-                        reader.readAsDataURL(file);
-                    }
-                
-                    function clickHandler() {
-                        document.getElementById('fileInput').click();
-                    }
-                </script>
 
 
                 <button type="submit" class="btn">Dodaj</button>
-                <button type="button" class="btn cancel" onclick="closeForm()">Anuluj</button>
+                <button type="reset" class="btn cancel" onclick="closeForm();clearImage()">Anuluj</button>
               </form>
             </div>
           </div>
-          <script>
-            function openForm() {
-              document.getElementById("popupForm").style.display = "block";
-            }
-            function closeForm() {
-              document.getElementById("popupForm").style.display = "none";
-            }
-          </script>
+
         
         <h2>Tagi<h2>
     </div>
