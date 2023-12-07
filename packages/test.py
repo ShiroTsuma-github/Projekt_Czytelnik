@@ -48,7 +48,6 @@ def addBook():
         # komentarz = request.form['komentarz']
         tagi = request.form['tagi']
 
-
     return redirect(url_for('index'))
 
 
@@ -57,7 +56,9 @@ def index():
     cur = get_db().cursor()
     cur.execute('SELECT * FROM Ksiazka') 
     data = cur.fetchall() 
-    return render_template("base.html", data=data) 
+    cur.execute('SELECT * from Gatunek')
+    gatunek = cur.fetchall()
+    return render_template("base.html", data=data, gatunki=gatunek) 
 
 
 @app.teardown_appcontext

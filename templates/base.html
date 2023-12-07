@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css')}}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{url_for('static', filename='js/form_image.js')}}"></script>
     <script src="{{url_for('static', filename='js/form_show_hide.js')}}"></script>
+    <script src="{{url_for('static', filename='js/multiple_select.js')}}"></script>
 </head>
 <body>
     <nav>
@@ -51,7 +53,24 @@
                         </div>
                         <input type="text" required id="autor" name='autor' placeholder="Autor">
                         <div class="autgat">
-                            <input type="text" required id="gatunek" name="gatunek" placeholder="Gatunek"> 
+                            <!-- <input type="text" required id="gatunek" name="gatunek" placeholder="Gatunek">  -->
+                            <!-- <select name="gatunek" id="gatunek" multiple>
+                                {% for gatunek in gatunki %}
+                                    <option value="{{gatunek[0]}}">{{gatunek[1]}}</option>
+                                {% endfor %}
+                            </select> -->
+                            <div class="multiselect" id="gatunki" multiple="multiple" data-target="dodajKsiazke">
+                                <div class="title noselect">
+                                    <span class="text">Select</span>
+                                    <span class="close-icon">&times;</span>
+                                    <span class="expand-icon">&plus;</span>
+                                </div>
+                                <div class="container">
+                                    {% for gatunek in gatunki %}
+                                    <option secret="{{gatunek[0]}}" value="{{gatunek[1]}}">{{gatunek[1]}}</option>
+                                {% endfor %}
+                                </div>
+                            </div>
                             <input type="text" id="tagi" name="tagi" placeholder="Tagi">
                         </div>
                     </div>
