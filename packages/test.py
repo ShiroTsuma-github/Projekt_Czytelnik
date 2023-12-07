@@ -29,7 +29,7 @@ def make_dicts(cursor, row):
 @app.route('/')
 def index():
     cur = get_db().cursor()
-    return 'hello world'
+    return render_template('base.html')
 
 
 @app.route('/about')
