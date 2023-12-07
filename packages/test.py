@@ -39,14 +39,16 @@ def make_dicts(cursor, row):
                 for idx, value in enumerate(row))
 
 
-@app.route('/')
+@app.route('/', methods=["GET", "POST"])
 def index():
     cur = get_db().cursor()
     if request.method == 'POST':
         print("posted")
     else:
-        return render_template('base.html')
-    return render_template('base.html')
+        return render_template('base.html') 
+    cur.execute('SELECT * FROM Ksiazka') 
+    data = cur.fetchall() 
+    return render_template("base.html", data=data) 
 
 
 # @app.teardown_appcontext

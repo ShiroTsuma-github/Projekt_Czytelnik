@@ -67,14 +67,19 @@
         <h2>Tagi<h2>
     </div>
     <div class="rightbar">
-        
-        <!-- <div class="flex-container">
-            <h1>1</h1>
-            <h1>2</h1>
-            <h1>3</h1>
-            <h1>4</h1>
-            <h1>5</h1>
-        </div> -->
+        {%for ksiazka in data%} 
+        <table class="book"> 
+            <tr> 
+                {{ksiazka[1]}} 
+            </tr> 
+            <tr> 
+                {{ksiazka[2]}}/{{ksiazka[1]}} 
+            </tr>
+            <tr> 
+                {{ksiazka[3]}}/5
+            </tr>               
+          </table>
+          {%endfor%} 
     </div>
 </div>
 </body>
