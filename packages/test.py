@@ -20,6 +20,10 @@ def get_db():
     return db
 
 
+def get_cursor():
+    return get_db().cursor()
+
+
 def init_db():
     """Run this only if database is empty or there were changes to ksiazki.sql
     """
@@ -40,19 +44,24 @@ def addBook():
     if request.method == 'POST':
         tytul = request.form['tytul']
         autor = request.form['autor']
-        okladka = request.form['okladka']
+        okladka = None if request.form['okladka'] == "" else request.form['okladka']
         rozdzialy = int(request.form['total_chapters'])
         przeczytane = int(request.form['actual_chapters'])
         ocena = int(request.form.get('ocena', '0'))
         gatunek = (request.form['wybrane_gatunki']).split(',')
         # komentarz = request.form['komentarz']
-        tagi = request.form['tagi']
+        tagi = None if request.form['tagi'] == "" else request.form['tagi']
+        cur = get_db().cursor()
+        cur.execute('INSERT INTO Ksiazka (ksiazka_tytul, ksiazka_strony, ksiazka_przeczytane, ksiazka_ocena, ksiazka_okladka, ksiazka_komentarz) VALUES (?, ?, ?, ?, ?, ?)',
+                    (tytul, rozdzialy, przeczytane, ocena, okladka, tagi))
+        get_db().commit()
+
     return redirect(url_for('index'))
 
 
 @app.route('/')
 def index():
-    cur = get_db().cursor()
+    cur = get_cursor()
     cur.execute('SELECT * FROM Ksiazka') 
     data = cur.fetchall() 
     cur.execute('SELECT * from Gatunek')
