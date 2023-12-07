@@ -7,6 +7,7 @@ Array.prototype.search = function(elem) {
     return -1;
 };
 
+
 var Multiselect = function(selector) {
     if(!$(selector)) {
         console.error("ERROR: Element %s does not exist.", selector);
@@ -149,3 +150,11 @@ Multiselect.prototype = {
 $(document).ready(function() {
     var multi = new Multiselect("#gatunki");
 });
+
+
+function getSelectedFinish() {
+    var whole_list = document.getElementById("all_selected_text");
+    var forward_to = document.getElementById("wybrane_gatunki");
+    forward_to.innerHTML = whole_list.innerHTML;
+    forward_to.value = whole_list.innerHTML;
+}

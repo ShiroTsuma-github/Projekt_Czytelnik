@@ -53,21 +53,16 @@
                         </div>
                         <input type="text" required id="autor" name='autor' placeholder="Autor">
                         <div class="autgat">
-                            <!-- <input type="text" required id="gatunek" name="gatunek" placeholder="Gatunek">  -->
-                            <!-- <select name="gatunek" id="gatunek" multiple>
-                                {% for gatunek in gatunki %}
-                                    <option value="{{gatunek[0]}}">{{gatunek[1]}}</option>
-                                {% endfor %}
-                            </select> -->
-                            <div class="multiselect" id="gatunki" multiple="multiple" data-target="dodajKsiazke">
+                            <input type="hidden" name="wybrane_gatunki" name="wybrane_gatunki" id="wybrane_gatunki">
+                            <div class="multiselect" id="gatunki" name="gatunki" multiple="multiple" data-target="dodajKsiazke">
                                 <div class="title noselect">
-                                    <span class="text">Select</span>
+                                    <span id="all_selected_text" class="text">Select</span>
                                     <span class="close-icon">&times;</span>
                                     <span class="expand-icon">&plus;</span>
                                 </div>
                                 <div class="container">
                                     {% for gatunek in gatunki %}
-                                    <option secret="{{gatunek[0]}}" value="{{gatunek[1]}}">{{gatunek[1]}}</option>
+                                    <option  value="{{gatunek[1]}}">{{gatunek[1]}}</option>
                                 {% endfor %}
                                 </div>
                             </div>
@@ -75,8 +70,7 @@
                         </div>
                     </div>
                 </div>
-
-                <button type="submit" class="btn">Dodaj</button>
+                <button type="submit" onclick="getSelectedFinish()" class="btn">Dodaj</button>
                 <button type="reset" class="btn cancel" onclick="closeForm();clearImage()">Anuluj</button>
               </form>
             </div>

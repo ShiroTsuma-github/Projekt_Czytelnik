@@ -44,10 +44,9 @@ def addBook():
         rozdzialy = int(request.form['total_chapters'])
         przeczytane = int(request.form['actual_chapters'])
         ocena = int(request.form.get('ocena', '0'))
-        gatunek = request.form['gatunek']
+        gatunek = (request.form['wybrane_gatunki']).split(',')
         # komentarz = request.form['komentarz']
         tagi = request.form['tagi']
-
     return redirect(url_for('index'))
 
 
