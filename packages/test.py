@@ -36,7 +36,7 @@ def make_dicts(cursor, row):
 @app.route("/add", methods=["GET", "POST"])
 def addBook():
     if request.method == 'POST':
-        print("posted")
+        print(request.form)
     return render_template('base.html')
 
 
