@@ -46,7 +46,7 @@ nav>h1{
 .leftbar{
     background-color: #d8c3a5;
     color: #1e1e24;
-    /* position: fixed; */
+    position: fixed;
     width: 20%;
     height: 100vh;
     font-family: 'Barlow', sans-serif;
@@ -60,6 +60,7 @@ nav>h1{
     font-family: 'Barlow', sans-serif;
     margin-left: auto;
     margin-right: 0;
+    padding: 10px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -73,6 +74,14 @@ nav>h1{
     margin-right: auto;
     margin-top: 0;
 }
+
+.book-title{
+    font-family: 'Young Serif', serif !important;
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+
 .image{
     margin-left: 20px;
     margin-top: 7px;
@@ -351,3 +360,4 @@ nav>h1{
 .multiselect.active > .container > option {
     display: block;
 }
+
