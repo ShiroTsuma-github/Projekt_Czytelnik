@@ -4,6 +4,7 @@
 - szkielet bazy
 - formularz popup
 - depresje
+- podstawowy logi
 
 ## CO DO ZROBIENIA
 - Dodac pole na komentarz
